@@ -11,7 +11,7 @@ psi-plus (0.15~svn3910-2) unstable; urgency=low
   * File debian/copyright was rewritten in according to DEP-5.
   * Removed useless file README.source
 
- -- Boris Pek <tehnick-8@mail.ru>  Thu, 06 Oct 2011 01:35:13 +0300
+ -- Boris Pek <tehnick-8@mail.ru>  Sun, 09 Oct 2011 17:35:08 +0300
 
 psi-plus (0.15~svn3910-1) unstable; urgency=low
 
