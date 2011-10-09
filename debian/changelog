@@ -3,7 +3,12 @@ psi-plus (0.15~svn3910-2) unstable; urgency=low
   * File debian/control was updated:
     - removed dependence from non available package psi-plus-icons
       (Closes: #640399, #640723)
+    - fixed typos in detail description of psi-plus-content-download package
+      (Closes: #644800)
     - added additional fields Vcs-Git and Vcs-Browser
+  * File debian/rules was updated: added possibility of parallel compilation.
+    (parallel=<n> from DEB_BUILD_OPTIONS is used)
+  * File debian/copyright was rewritten in according to DEP-5.
   * Removed useless file README.source
 
  -- Boris Pek <tehnick-8@mail.ru>  Thu, 06 Oct 2011 01:35:13 +0300

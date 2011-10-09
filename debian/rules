@@ -2,10 +2,17 @@
 # Uncomment this to turn on verbose mode.
 #DH_VERBOSE=1
 
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+endif
+
+ifeq (,$(NUMJOBS))
+	NUMJOBS = 1
+endif
+
 QMAKE=qmake-qt4
 QCONF=qt-qconf
 CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-separate-debug-info
-#MAKEOPT=-j4
 
 # This has to be exported to make some magic below work.
 #export DH_OPTIONS
@@ -22,8 +29,8 @@ override_dh_auto_configure:
 	./configure --prefix=/usr $(CONF)
 
 override_dh_auto_build:
-	$(MAKE) $(MAKEOPT)
-	$(foreach plug,$(plugs), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) && $(MAKE); )
+	$(MAKE) -j$(NUMJOBS)
+	$(foreach plug,$(plugs), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS); )
 
 override_dh_auto_install:
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
@@ -31,7 +38,7 @@ override_dh_auto_install:
 	#Making the same, but using webkit
 	$(MAKE) clean
 	./configure --prefix=/usr $(CONF) --enable-webkit
-	$(MAKE) $(MAKEOPT)
+	$(MAKE) -j$(NUMJOBS)
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus-webkit install
 	rm $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
 	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
