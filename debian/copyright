@@ -1,4 +1,4 @@
-Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=202
+Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5/index.html?revision=248
 Debianized-By: Ivan Borzenkov <ivan1986@list.ru>
 Debianized-Date: Mon, 23 Feb 2009 19:56:49 +0300
 Upstream-Name: Psi+
@@ -273,7 +273,7 @@ License: GPL-2+
 
 Files: debian/*
 Copyright: 2009-2011 Ivan Borzenkov <ivan1986@list.ru>
- 2011 Boris Pek <tehnick-8@mail.ru>
+ 2011-2012 Boris Pek <tehnick-8@mail.ru>
 License: GPL-2+
 
 License: GPL-2+
