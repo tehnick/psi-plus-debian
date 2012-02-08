@@ -2,8 +2,8 @@ Source: psi-plus
 Section: net
 Priority: optional
 Maintainer: Boris Pek <tehnick-8@mail.ru>
-Build-Depends: debhelper (>= 7.0.50~),
- quilt, qconf, libqtwebkit-dev | libqt4-dev (>=4.5.2),
+Build-Depends: debhelper (>= 7),
+ libqtwebkit-dev | libqt4-dev (>=4.5.2), qconf,
  libqca2-dev (>= 2.0.0), libxss-dev, libaspell-dev, zlib1g-dev, libsm-dev
 Homepage: http://psi-dev.googlecode.com/
 Vcs-Git: git://github.com/tehnick/psi-plus-debian.git
