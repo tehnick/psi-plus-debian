@@ -1,4 +1,4 @@
-Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5/index.html?revision=248
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Debianized-By: Ivan Borzenkov <ivan1986@list.ru>
 Debianized-Date: Mon, 23 Feb 2009 19:56:49 +0300
 Upstream-Name: Psi+
@@ -7,7 +7,7 @@ Upstream-Contact: zet <vladimir.shelukhin@gmail.com>
  Dealer_WeARE <wadealer@gmail.com>
  maj <maksim.maj@gmail.com>
  diSabler <dsy@dsy.name>
-Original-Source: http://psi-dev.googlecode.com/
+Source: http://psi-dev.googlecode.com/
  There are such important features:
  1) Developers of Psi+ project didn't make full fork from Psi project. They are
  preparing and distributing only separate patches for the upstream (original
