@@ -1,8 +1,30 @@
-psi-plus (0.15.3910-1) unstable; urgency=low
+psi-plus (0.15.5267-1) unstable; urgency=low
 
-  * FAKE
+  * New upstream release.
+  * Bumped Standards-Version to 3.9.3.
+  * Package psi-plus-content-download was renamed to
+    psi-plus-content-downloader.
+  * Package psi-plus-skins was moved to separate source package
+    psi-plus-resources.
+  * Russian translation was moved to separate source package
+    psi-plus-i18n.
+  * Changed tarball compression format: LZMA2 is used now.
+  * debian/control was updated:
+    - added string `DM-Upload-Allowed: yes'
+    - added build dependencies: libotr2-dev and libtidy-dev
+    - removed build dependency on quilt
+      (it is not used in debian/rules anymore)
+    - updated short and detail descriptions of packages
+  * debian/rules was updated:
+    - added additional section get-orig-source
+    - built all plugins from unix sub-directory
+      (only general plugins were built before)
+  * debian/watch was updated: new location of sources
+  * debian/psi-plus-webkit.desktop was updated:
+    added entry StartupWMClass (LP: #894585).
+  * debian/copyright was updated.
 
- -- Boris Pek <tehnick-8@mail.ru>  Tue, 20 Mar 2012 23:13:16 +0200
+ -- Boris Pek <tehnick-8@mail.ru>  Sat, 24 Mar 2012 10:44:35 +0200
 
 psi-plus (0.15~svn3910-2) unstable; urgency=low
 
