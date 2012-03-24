@@ -1,2 +1,2 @@
 version=3
-http://githubredir.debian.net/github/tehnick/psi-plus /github/tehnick/psi-plus/(.+)\.tar\.gz
+https://github.com/tehnick/psi-plus/tags .*/tehnick/psi-plus/tarball/(\d.+) debian uupdate

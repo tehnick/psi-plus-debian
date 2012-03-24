@@ -7,41 +7,12 @@ Upstream-Contact: zet <vladimir.shelukhin@gmail.com>
  Dealer_WeARE <wadealer@gmail.com>
  maj <maksim.maj@gmail.com>
  diSabler <dsy@dsy.name>
-Source: http://psi-dev.googlecode.com/
- There are such important features:
- 1) Developers of Psi+ project didn't make full fork from Psi project. They are
- preparing and distributing only separate patches for the upstream (original
- Psi). Some of this patches periodicaly migrate to upstream.
- 2) Psi+ developers make own plugins which incompatible with Psi.
- 3) Psi+ developers make different concomitant components: themes, sounds,
- emoticon packs.
- 4) There are no official tarballs for Psi+. Users should use svn/git to get
- sources.
- 5) There are no even svn/git tags or preffered commits. Developing process is
- continuous.
+Source: https://github.com/tehnick/psi-plus/tags
+ The orig.tar.xz is generated from upstream gzipped tarball, except it uses
+ LZMA2 compression. See section get-orig-source in debian/rules file for details.
  .
- The orig.tar.bz2 is generated from a few source trees:
- git://github.com/psi-im/psi.git
- git://github.com/psi-im/iris.git
- git://github.com/psi-im/libpsi.git
- http://psi-dev.googlecode.com/svn/trunk/
- .
- Following files and directories were ignored:
- https://github.com/psi-im/psi/blob/master/configure.exe
- https://github.com/psi-im/psi/tree/master/win32/
- https://github.com/psi-im/libpsi/tree/master/tools/zip/minizip/win32/
- https://github.com/psi-im/libpsi/tree/master/tools/idle/win32/
- http://psi-dev.googlecode.com/svn/trunk/.svg
- http://psi-dev.googlecode.com/svn/trunk/iconsets/
- http://psi-dev.googlecode.com/svn/trunk/img.jpg
- http://psi-dev.googlecode.com/svn/trunk/resources/
- http://psi-dev.googlecode.com/svn/trunk/scripts/win32/
- http://psi-dev.googlecode.com/svn/trunk/version.txt
- .
- Versioning:
- Version of package consists from two parts: <upstream version>-svn<Psi+ index>
- <upstream version> is current developing version of original Psi project.
- <Psi+ index> is svn commit index in Psi+ repo (see debian/watch file).
+ There is no constant tarball in GitHub: it is generated each time when it is
+ asked. So we do not need to keep original tarball in Debian.
 
 Files: *
  admin/*
@@ -269,6 +240,10 @@ Copyright: 2009-2010 Rion (Sergey Ilinyh) <rion4ik@gmail.com>
  2010 Vitaly Tonkacheyev
  2010 KukuRuzo
  2011 Aleksey Andreev
+License: GPL-2+
+
+Files: generate-single-repo.sh
+Copyright: 2012 Boris Pek <tehnick-8@mail.ru>
 License: GPL-2+
 
 Files: debian/*

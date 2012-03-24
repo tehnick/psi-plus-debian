@@ -10,6 +10,12 @@ ifeq (,$(NUMJOBS))
 	NUMJOBS = 1
 endif
 
+PACKAGE = psi-plus
+DEVELOPER = tehnick
+PROJECT = psi-plus
+
+CUR_VER = $(shell uscan --dehs | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
+
 QMAKE=qmake-qt4
 QCONF=qt-qconf
 CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-separate-debug-info
@@ -18,19 +24,20 @@ CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-
 #export DH_OPTIONS
 
 #select all plugins
-plugs = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
+plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
+plugins_unix = $(notdir $(wildcard $(CURDIR)/src/plugins/unix/*plugin ) )
 
 %:
-	dh $@
+	dh $@ --parallel
 
 override_dh_auto_configure:
-	QUILT_PC=.pc_psi quilt push -a --quiltrc /dev/null
 	$(QCONF)
 	./configure --prefix=/usr $(CONF)
 
 override_dh_auto_build:
 	$(MAKE) -j$(NUMJOBS)
-	$(foreach plug,$(plugs), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS); )
+	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS); )
+	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS); )
 
 override_dh_auto_install:
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
@@ -55,10 +62,6 @@ override_dh_install:
 	dh_install
 	#Deleting exported plugins
 	rm -f $(CURDIR)/debian/psi-plus-plugins/usr/lib/psi-plus/plugins/libcontentdownloaderplugin.so
-	#Deleting exported icons
-	rm -rf $(CURDIR)/debian/psi-plus-icons/usr/share/psi-plus/iconsets/roster
-	rm -rf $(CURDIR)/debian/psi-plus-icons/usr/share/psi-plus/iconsets/clients
-	rm -rf $(CURDIR)/debian/psi-plus-icons/usr/share/psi-plus/iconsets/emoticons
 	#Exporting all from psi-plus-common
 	./debian/mergedups.sh
 
@@ -75,7 +78,8 @@ override_dh_auto_clean:
 	rm -rf iris/lib iris/conf.pri
 	rm -rf .qconftemp
 
-	$(foreach plug,$(plugs), cd $(CURDIR)/src/plugins/generic/$(plug) && [ ! -f Makefile ] || $(MAKE) distclean; )
+	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && [ ! -f Makefile ] || $(MAKE) distclean; )
+	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && [ ! -f Makefile ] || $(MAKE) distclean; )
 
 	- QUILT_PC=.pc_psi quilt pop -af --quiltrc /dev/null
 	rm -rf .pc_psi
@@ -86,3 +90,15 @@ override_dh_strip:
 	dh_strip -ppsi-plus-plugins --dbg-package=psi-plus-plugins-dbg
 	dh_strip --remaining-packages
 
+get-orig-source:
+	# preparation
+	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)"
+	# sources
+	wget -4 "http://nodeload.github.com/$(DEVELOPER)/$(PROJECT)/tarball/$(CUR_VER)"
+	rm -rf $(DEVELOPER)-$(PROJECT)-*
+	tar xzf "$(CUR_VER)"
+	mv $(DEVELOPER)-$(PROJECT)-* "$(PACKAGE)-$(CUR_VER)"
+	# tarball
+	tar -cJf ../"$(PACKAGE)_$(CUR_VER).orig.tar.xz" "$(PACKAGE)-$(CUR_VER)"
+	# cleaning
+	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)"
