@@ -1,4 +1,4 @@
-psi-plus (0.15.5267-1) unstable; urgency=low
+psi-plus (0.15.5268-1) unstable; urgency=low
 
   * New upstream release.
   * Bumped Standards-Version to 3.9.3.
@@ -23,8 +23,10 @@ psi-plus (0.15.5267-1) unstable; urgency=low
   * debian/psi-plus-webkit.desktop was updated:
     added entry StartupWMClass (LP: #894585).
   * debian/copyright was updated.
+  * Upstream fixed wrong location of icons and similar data files in
+    content-downloader plugin (Closes: #665649).
 
- -- Boris Pek <tehnick-8@mail.ru>  Sat, 24 Mar 2012 10:44:35 +0200
+ -- Boris Pek <tehnick-8@mail.ru>  Mon, 26 Mar 2012 01:23:29 +0300
 
 psi-plus (0.15~svn3910-2) unstable; urgency=low
 
