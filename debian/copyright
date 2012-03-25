@@ -24,14 +24,12 @@ Files: *
  qcm/*
  sound/*
  src/*
- third-party/*
  tools/*
-Source: git://github.com/psi-im/psi.git
 Copyright: 2001-2008 Justin Karneges <justin@affinix.com>
  2003-2009 Michail Pishchagin <mblsha@users.sourceforge.net>
  2001-2008 Remko Troncon
  2010-2011 Rion <rion4ik@gmail.com>
- 2006-2007 Kevin Smith <kismith@psi-im.org>,
+ 2006-2007 Kevin Smith <kismith@psi-im.org>
  2006-2008 Martin Hostettler
  2006-2008 Joonas Govenius
  1992-2007 Trolltech ASA.
@@ -40,6 +38,8 @@ Copyright: 2001-2008 Justin Karneges <justin@affinix.com>
  2010 Tobias Markmann
  2006 Cestonaro Thilo
  2007 Maciek Niedzielski
+ 2011 Evgeny Khryukin
+ 2011 Artem Izmaylov <artem@aimp.ru>
 License: GPL-2+ with OpenSSL exception
  This program is free software: you can redistribute it and/or modify it under
  the terms of the GNU General Public License as published by the Free Software
@@ -70,7 +70,6 @@ License: GPL-2+ with OpenSSL exception
  you do not wish to do so, delete this exception statement from your version.
 
 Files: iconsets/roster/*
-Source: git://github.com/psi-im/psi.git
 Copyright: 2003-2007 Michail Pishchagin <mblsha@users.sourceforge.net>
  2005-2007 Remko Tronçon (http://el-tramo.be)
  2005-2007 Everaldo Coelho (http://www.everaldo.com)
@@ -80,8 +79,8 @@ License: LGPL-3
 Files: src/psimedia/*
  src/tools/advwidget/*
  src/tools/iconset/*
+ src/widgets/*
  third-party/*
-Source: git://github.com/psi-im/psi.git
 Copyright: 2008-2009 Barracuda Networks, Inc.
  2003-2007 Michail Pishchagin <mblsha@users.sourceforge.net>
  2003-2007 Justin Karneges <justin@affinix.com>
@@ -90,26 +89,29 @@ Copyright: 2008-2009 Barracuda Networks, Inc.
  1999-2000 Tom Tromey
  2003 Robert W. Brewer <rbrewer@op.net>
  2000 Red Hat, Inc.
+ 2007 Kevin Smith <kismith@psi-im.org>
+ 2009 Sergey Il'inykh
+ 2009 Maciej Niedzielski
+ 1992-2006 Trolltech AS.
+ 2010 Khryukin Evgeny
+ 2010 Vitaly Tonkacheyev
 License: LGPL-2.1+
 
 Files: third-party/qca/qca/src/botantools/botan/*
  third-party/qca/qca/src/botantools/wrapns.c
  src/tools/crash/crash_sigsegv.h
  src/tools/crash/crash_sigsegv.cpp
-Source: git://github.com/psi-im/psi.git
 Copyright: 2003-2007 Justin Karneges <justin@affinix.com>
  1999-2007 The Botan Project
  2003 Juan F. Codagnone <juam@users.sourceforge.net>
 License: BSD-2-clause
 
 Files: src/tools/tunecontroller/plugins/winamp/third-party/wa_ipc.h
-Source: git://github.com/psi-im/psi.git
 Copyright: 2003 Nullsoft, Inc.
 License: zlib-License
 
 Files: src/plugins/generic/noughtsandcrosses/tictac.h
  src/plugins/generic/noughtsandcrosses/tictac.cpp
-Source: git://github.com/psi-im/psi.git
 Copyright: 1992-2000 Trolltech AS.  All rights reserved.
 License: public-domain
  This files are part of an example program for Qt. This example program may be
@@ -117,7 +119,6 @@ License: public-domain
 
 Files: iris/*
  iris/src/xmpp/*
-Source: git://github.com/psi-im/iris.git
 Copyright: 2001-2008 Justin Karneges <justin@affinix.com>
  2008 Remko Troncon
 License: LGPL-3
@@ -128,7 +129,6 @@ Files: iris/tools/icetunnel/*
  iris/src/libidn/*
  iris/src/xmpp/xmpp-core/*
  iris/src/xmpp/xmpp-im/*
-Source: git://github.com/psi-im/iris.git
 Copyright: 2008-2010 Barracuda Networks, Inc.
  2001-2008 Justin Karneges <justin@affinix.com>
  2002-2003 Simon Josefsson
@@ -141,13 +141,11 @@ Copyright: 2008-2010 Barracuda Networks, Inc.
 License: LGPL-2.1+
 
 Files: iris/src/jdns/*
-Source: git://github.com/psi-im/iris.git
 Copyright: 2005-2006 Justin Karneges <justin@affinix.com>
  2005 Jeremie Miller
 License: MIT
 
 Files: src/libpsi/*
-Source: git://github.com/psi-im/libpsi.git
 Copyright: 2003-2009 Michail Pishchagin <mblsha@users.sourceforge.net>
  2006-2008 Maciej Niedzielski
  2003-2006 Justin Karneges <justin@affinix.com>
@@ -160,69 +158,52 @@ License: GPL-2+
 
 Files: src/libpsi/tools/idle/*
  src/libpsi/tools/zip/zip.*
-Source: git://github.com/psi-im/iris.git
 Copyright: 2001-2008 Justin Karneges <justin@affinix.com>
  2003 Tarkvara Design Inc.
 License: LGPL-2.1+
 
 Files: libpsi/tools/globalshortcut/NDKeyboardLayout.h
  libpsi/tools/globalshortcut/NDKeyboardLayout.m
-Source: git://github.com/psi-im/libpsi.git
 Copyright: 2010 Nathan Day
 License: MIT
 
 Files: src/libpsi/tools/zip/minizip/*
-Source: git://github.com/psi-im/iris.git
 Copyright: 1998 Gilles Vollant
 License: zlib-License
 
-Files: changelog*
- certs/rootcert.xml
+Files:  themes/*
  iconsets/system/default/psiplus/*
  iconsets/roster/default/typing.png
- lang/ru/*
- patches/*
- plugins/generic/attentionplugin/*
- plugins/generic/extendedoptionsplugin/*
- plugins/generic/qipxstatusesplugin/*
- plugins/generic/autoreplyplugin/*
- plugins/generic/gmailserviceplugin/*
- plugins/generic/screenshotplugin/*
- plugins/generic/birthdayreminderplugin/*
- plugins/generic/gomokugameplugin/*
- plugins/generic/skinsplugin/*
- plugins/generic/captchaformsplugin/*
- plugins/generic/historykeeperplugin/*
- plugins/generic/stopspamplugin/*
- plugins/generic/chessplugin/*
- plugins/generic/icqdieplugin/*
- plugins/generic/storagenotesplugin/*
- plugins/generic/cleanerplugin/*
- plugins/generic/imageplugin/*
- plugins/generic/translateplugin/*
- plugins/generic/clientswitcherplugin/*
- plugins/generic/jabberdiskplugin/*
- plugins/generic/videostatusplugin/*
- plugins/generic/conferenceloggerplugin/*
- plugins/generic/juickplugin/*
- plugins/generic/watcherplugin/*
- plugins/generic/contentdownloaderplugin/*
- plugins/generic/pepchangenotifyplugin/*
- plugins/generic/extendedmenuplugin/*
- plugins/generic/pstoplugin/*
- scripts/*
- skins/*
- sound/attention.wav
- sound/chess_finish.wav
- sound/chess_start.wav
- sound/pepnotify.wav
- sound/watcher.wav
- sound/chess_error.wav
- sound/chess_move.wav
- sound/email.wav
- sound/reminder.wav
- themes/*
-Source: http://psi-dev.googlecode.com/svn/trunk/
+ src/plugins/generic/attentionplugin/*
+ src/plugins/generic/extendedoptionsplugin/*
+ src/plugins/generic/qipxstatusesplugin/*
+ src/plugins/generic/autoreplyplugin/*
+ src/plugins/generic/gmailserviceplugin/*
+ src/plugins/generic/screenshotplugin/*
+ src/plugins/generic/birthdayreminderplugin/*
+ src/plugins/generic/gomokugameplugin/*
+ src/plugins/generic/skinsplugin/*
+ src/plugins/generic/captchaformsplugin/*
+ src/plugins/generic/historykeeperplugin/*
+ src/plugins/generic/stopspamplugin/*
+ src/plugins/generic/chessplugin/*
+ src/plugins/generic/icqdieplugin/*
+ src/plugins/generic/storagenotesplugin/*
+ src/plugins/generic/cleanerplugin/*
+ src/plugins/generic/imageplugin/*
+ src/plugins/generic/translateplugin/*
+ src/plugins/generic/clientswitcherplugin/*
+ src/plugins/generic/jabberdiskplugin/*
+ src/plugins/generic/videostatusplugin/*
+ src/plugins/generic/conferenceloggerplugin/*
+ src/plugins/generic/juickplugin/*
+ src/plugins/generic/watcherplugin/*
+ src/plugins/generic/contentdownloaderplugin/*
+ src/plugins/generic/pepchangenotifyplugin/*
+ src/plugins/generic/extendedmenuplugin/*
+ src/plugins/generic/pstoplugin/*
+ src/plugins/generic/yandexnarodplugin/*
+ src/plugins/generic/otrplugin/*
 Copyright: 2009-2010 Rion (Sergey Ilinyh) <rion4ik@gmail.com>
  2009-2010 Khryukin Evgeny
  2009-2010 Virnik
@@ -240,7 +221,19 @@ Copyright: 2009-2010 Rion (Sergey Ilinyh) <rion4ik@gmail.com>
  2010 Vitaly Tonkacheyev
  2010 KukuRuzo
  2011 Aleksey Andreev
+ 2011 Evgeny Khryukin
+ 2004-2008 Ian Goldberg
+ 2004-2008 Chris Alexander
+ 2004-2008 Nikita Borisov
+ 2007-2010 Timo Engel <timo-e@freenet.de>
+ 2008-2009 Alexander Kazarin <boiler@co.ru>
+ 2010 Ivan Romanov <drizt@land.ru>
 License: GPL-2+
+
+Files: src/plugins/generic/screenshotplugin/qxt/*
+Copyright: 2006-2011 Qxt Foundation <foundation@libqxt.org>
+ 2011 Marcin Jakubowski <mjakubowski@gmail.com>
+License: BSD-3-clause
 
 Files: generate-single-repo.sh
 Copyright: 2012 Boris Pek <tehnick-8@mail.ru>
@@ -307,6 +300,30 @@ License: BSD-2-clause
  2. Redistributions in binary form must reproduce the above copyright 
     notice, this list of conditions and the following disclaimer in the 
     documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the LibQxt project nor the
+    names of its contributors may be used to endorse or promote products
+    derived from this software without specific prior written permission.
  .
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
