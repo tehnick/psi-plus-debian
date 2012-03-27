@@ -1,13 +1,12 @@
-psi-plus (0.15.5268-1) unstable; urgency=low
+psi-plus (0.15.5271-1) unstable; urgency=low
 
   * New upstream release.
   * Bumped Standards-Version to 3.9.3.
   * Package psi-plus-content-download was renamed to
     psi-plus-content-downloader.
-  * Package psi-plus-skins was moved to separate source package
-    psi-plus-resources.
   * Russian translation was moved to separate source package
     psi-plus-i18n.
+  * Sound files were moved to separate package psi-plus-sounds.
   * Changed tarball compression format: LZMA2 is used now.
   * debian/control was updated:
     - added string `DM-Upload-Allowed: yes'
@@ -26,7 +25,7 @@ psi-plus (0.15.5268-1) unstable; urgency=low
   * Upstream fixed wrong location of icons and similar data files in
     content-downloader plugin (Closes: #665649).
 
- -- Boris Pek <tehnick-8@mail.ru>  Mon, 26 Mar 2012 01:23:29 +0300
+ -- Boris Pek <tehnick-8@mail.ru>  Tue, 27 Mar 2012 23:39:03 +0300
 
 psi-plus (0.15~svn3910-2) unstable; urgency=low
 

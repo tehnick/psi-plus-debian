@@ -23,7 +23,7 @@ CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-
 # This has to be exported to make some magic below work.
 #export DH_OPTIONS
 
-#select all plugins
+# Select all plugins
 plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
 plugins_unix = $(notdir $(wildcard $(CURDIR)/src/plugins/unix/*plugin ) )
 
@@ -41,8 +41,8 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
-	rm -f $(CURDIR)/debian/psi-plus/usr/bin/psi-plus.debug #remove static debug file
-	#Making the same, but using webkit
+	rm -f $(CURDIR)/debian/psi-plus/usr/bin/psi-plus.debug # Remove static debug file
+	# Make the same, but using webkit
 	$(MAKE) clean
 	./configure --prefix=/usr $(CONF) --enable-webkit
 	$(MAKE) -j$(NUMJOBS)
@@ -51,19 +51,21 @@ override_dh_auto_install:
 	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
 	cp $(CURDIR)/src/psi-plus $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus-webkit
 	cp $(CURDIR)/debian/psi-plus-webkit.desktop $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/
-	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus.debug #remove static debug file
-	#Deleting temporary files
+	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus.debug # Remove static debug file
+	# Deleting temporary files
 	rm -f $(CURDIR)/debian/psi-plus/usr/share/psi-plus/COPYING
-	rm -f $(CURDIR)/debian/psi-plus/usr/share/psi-plus/README
 	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/share/psi-plus/COPYING
-	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/share/psi-plus/README
 
 override_dh_install:
 	dh_install
-	#Deleting exported plugins
+	# Deleting exported plugins
 	rm -f $(CURDIR)/debian/psi-plus-plugins/usr/lib/psi-plus/plugins/libcontentdownloaderplugin.so
-	#Exporting all from psi-plus-common
+	# Exporting all from psi-plus-common
 	./debian/mergedups.sh
+	# Deleting extra copy of sound files
+	rm -rf $(CURDIR)/debian/psi-plus-common/usr/share/psi-plus/sound/
+	# Fix permissions
+	chmod uog-x $(CURDIR)/debian/psi-plus-skins/usr/share/psi-plus/skins/mac/native_mac/images/qcombobox.png
 
 override_dh_auto_clean:
 	dh_clean

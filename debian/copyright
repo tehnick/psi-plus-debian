@@ -171,7 +171,16 @@ Files: src/libpsi/tools/zip/minizip/*
 Copyright: 1998 Gilles Vollant
 License: zlib-License
 
-Files:  themes/*
+Files: themes/* skins/*
+ sound/attention.wav
+ sound/chess_finish.wav
+ sound/chess_start.wav
+ sound/pepnotify.wav
+ sound/watcher.wav
+ sound/chess_error.wav
+ sound/chess_move.wav
+ sound/email.wav
+ sound/reminder.wav
  iconsets/system/default/psiplus/*
  iconsets/roster/default/typing.png
  src/plugins/generic/attentionplugin/*
