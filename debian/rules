@@ -1,6 +1,4 @@
 #!/usr/bin/make -f
-# Uncomment this to turn on verbose mode.
-#DH_VERBOSE=1
 
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
@@ -10,20 +8,17 @@ ifeq (,$(NUMJOBS))
 	NUMJOBS = 1
 endif
 
-PACKAGE = psi-plus
-DEVELOPER = tehnick
-PROJECT = psi-plus
-
-CUR_VER = $(shell uscan --dehs | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
-
 QMAKE=qmake-qt4
 QCONF=qt-qconf
 CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-separate-debug-info
 
-# This has to be exported to make some magic below work.
-#export DH_OPTIONS
+CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS) $(CPPFLAGS)
+CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS) $(CPPFLAGS)
+LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
+export CPPFLAGS CFLAGS CXXFLAGS LDFLAGS
 
-# Select all plugins
+# Selecting all plugins
 plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
 plugins_unix = $(notdir $(wildcard $(CURDIR)/src/plugins/unix/*plugin ) )
 
@@ -41,17 +36,17 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
-	rm -f $(CURDIR)/debian/psi-plus/usr/bin/psi-plus.debug # Remove static debug file
-	# Make the same, but using webkit
+	rm -f $(CURDIR)/debian/psi-plus/usr/bin/psi-plus.debug # Removing static debug file
+	# Making the same, but using webkit
 	$(MAKE) clean
 	./configure --prefix=/usr $(CONF) --enable-webkit
 	$(MAKE) -j$(NUMJOBS)
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus-webkit install
-	rm $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
-	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
-	cp $(CURDIR)/src/psi-plus $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus-webkit
-	cp $(CURDIR)/debian/psi-plus-webkit.desktop $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/
-	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus.debug # Remove static debug file
+	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
+	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
+	cp -f $(CURDIR)/src/psi-plus $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus-webkit
+	cp -f $(CURDIR)/debian/psi-plus-webkit.desktop $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/
+	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus.debug # Removing static debug file
 	# Deleting temporary files
 	rm -f $(CURDIR)/debian/psi-plus/usr/share/psi-plus/COPYING
 	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/share/psi-plus/COPYING
@@ -64,8 +59,8 @@ override_dh_install:
 	./debian/mergedups.sh
 	# Deleting extra copy of sound files
 	rm -rf $(CURDIR)/debian/psi-plus-common/usr/share/psi-plus/sound/
-	# Fix permissions
-	chmod uog-x $(CURDIR)/debian/psi-plus-skins/usr/share/psi-plus/skins/mac/native_mac/images/qcombobox.png
+	# Fixing permissions
+	chmod -f uog-x $(CURDIR)/debian/psi-plus-skins/usr/share/psi-plus/skins/mac/native_mac/images/qcombobox.png
 
 override_dh_auto_clean:
 	dh_clean
@@ -83,7 +78,6 @@ override_dh_auto_clean:
 	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && [ ! -f Makefile ] || $(MAKE) distclean; )
 	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && [ ! -f Makefile ] || $(MAKE) distclean; )
 
-	- QUILT_PC=.pc_psi quilt pop -af --quiltrc /dev/null
 	rm -rf .pc_psi
 
 override_dh_strip:
@@ -93,14 +87,4 @@ override_dh_strip:
 	dh_strip --remaining-packages
 
 get-orig-source:
-	# preparation
-	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)"
-	# sources
-	wget -4 "http://nodeload.github.com/$(DEVELOPER)/$(PROJECT)/tarball/$(CUR_VER)"
-	rm -rf $(DEVELOPER)-$(PROJECT)-*
-	tar xzf "$(CUR_VER)"
-	mv $(DEVELOPER)-$(PROJECT)-* "$(PACKAGE)-$(CUR_VER)"
-	# tarball
-	tar -cJf ../"$(PACKAGE)_$(CUR_VER).orig.tar.xz" "$(PACKAGE)-$(CUR_VER)"
-	# cleaning
-	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)"
+	uscan --noconf --verbose --force-download --rename --repack --download-current-version --destdir=..
