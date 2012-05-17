@@ -8,6 +8,12 @@ ifeq (,$(NUMJOBS))
 	NUMJOBS = 1
 endif
 
+PACKAGE = psi-plus
+DEVELOPER = tehnick
+PROJECT = psi-plus
+
+CUR_VER = $(shell uscan --dehs | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
+
 QMAKE=qmake-qt4
 QCONF=qt-qconf
 CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-separate-debug-info
@@ -87,4 +93,14 @@ override_dh_strip:
 	dh_strip --remaining-packages
 
 get-orig-source:
-	uscan --noconf --verbose --force-download --rename --repack --download-current-version --destdir=..
+	# preparation
+	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)"
+	# sources
+	wget -4 "http://nodeload.github.com/$(DEVELOPER)/$(PROJECT)/tarball/$(CUR_VER)"
+	rm -rf $(DEVELOPER)-$(PROJECT)-*
+	tar xzf "$(CUR_VER)"
+	mv $(DEVELOPER)-$(PROJECT)-* "$(PACKAGE)-$(CUR_VER)"
+	# tarball
+	tar -cJf ../"$(PACKAGE)_$(CUR_VER).orig.tar.xz" "$(PACKAGE)-$(CUR_VER)"
+	# cleaning
+	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)"
