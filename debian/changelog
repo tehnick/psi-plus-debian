@@ -1,3 +1,11 @@
+psi-plus (0.15.5333-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/rules was updated: fixed FTBFS with new build-arch handling
+    (Closes: #673340)
+
+ -- Boris Pek <tehnick-8@mail.ru>  Fri, 18 May 2012 21:40:24 +0300
+
 psi-plus (0.15.5329-1) unstable; urgency=low
 
   * New upstream release.
