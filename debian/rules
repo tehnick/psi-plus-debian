@@ -18,11 +18,11 @@ QMAKE=qmake-qt4
 QCONF=qt-qconf
 CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-separate-debug-info
 
-CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS) $(CPPFLAGS)
-CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS) $(CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
 LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
-export CPPFLAGS CFLAGS CXXFLAGS LDFLAGS
+
+MAKEFLAGS_=CFLAGS='$(CFLAGS)' CXXFLAGS='$(CXXFLAGS)' LFLAGS='$(LDFLAGS)'
 
 # Selecting all plugins
 plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
@@ -36,9 +36,9 @@ override_dh_auto_configure:
 	./configure --prefix=/usr $(CONF)
 
 override_dh_auto_build:
-	$(MAKE) -j$(NUMJOBS)
-	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS); )
-	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS); )
+	$(MAKE) -j$(NUMJOBS) $(MAKEFLAGS_)
+	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS) $(MAKEFLAGS_); )
+	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS) $(MAKEFLAGS_); )
 
 override_dh_auto_install:
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
@@ -46,7 +46,7 @@ override_dh_auto_install:
 	# Making the same, but using webkit
 	$(MAKE) clean
 	./configure --prefix=/usr $(CONF) --enable-webkit
-	$(MAKE) -j$(NUMJOBS)
+	$(MAKE) -j$(NUMJOBS) $(MAKEFLAGS_)
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus-webkit install
 	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
 	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
