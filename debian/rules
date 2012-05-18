@@ -18,12 +18,6 @@ QMAKE=qmake-qt4
 QCONF=qt-qconf
 CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-separate-debug-info
 
-CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
-CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
-LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
-
-MAKEFLAGS_=CFLAGS='$(CFLAGS)' CXXFLAGS='$(CXXFLAGS)' LFLAGS='$(LDFLAGS)'
-
 # Selecting all plugins
 plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
 plugins_unix = $(notdir $(wildcard $(CURDIR)/src/plugins/unix/*plugin ) )
@@ -36,9 +30,9 @@ override_dh_auto_configure:
 	./configure --prefix=/usr $(CONF)
 
 override_dh_auto_build:
-	$(MAKE) -j$(NUMJOBS) $(MAKEFLAGS_)
-	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS) $(MAKEFLAGS_); )
-	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS) $(MAKEFLAGS_); )
+	$(MAKE) -j$(NUMJOBS)
+	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS); )
+	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) && $(MAKE) -j$(NUMJOBS); )
 
 override_dh_auto_install:
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
@@ -46,12 +40,12 @@ override_dh_auto_install:
 	# Making the same, but using webkit
 	$(MAKE) clean
 	./configure --prefix=/usr $(CONF) --enable-webkit
-	$(MAKE) -j$(NUMJOBS) $(MAKEFLAGS_)
+	$(MAKE) -j$(NUMJOBS)
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus-webkit install
-	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
-	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
-	cp -f $(CURDIR)/src/psi-plus $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus-webkit
-	cp -f $(CURDIR)/debian/psi-plus-webkit.desktop $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/
+	rm $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
+	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
+	cp $(CURDIR)/src/psi-plus $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus-webkit
+	cp $(CURDIR)/debian/psi-plus-webkit.desktop $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/
 	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus.debug # Removing static debug file
 	# Deleting temporary files
 	rm -f $(CURDIR)/debian/psi-plus/usr/share/psi-plus/COPYING
@@ -65,8 +59,9 @@ override_dh_install:
 	./debian/mergedups.sh
 	# Deleting extra copy of sound files
 	rm -rf $(CURDIR)/debian/psi-plus-common/usr/share/psi-plus/sound/
-	# Fixing permissions
-	chmod -f uog-x $(CURDIR)/debian/psi-plus-skins/usr/share/psi-plus/skins/mac/native_mac/images/qcombobox.png
+	# Fixing permissions (temporary; it will be fixed in upstream)
+	[ ! -d $(CURDIR)/debian/psi-plus-skins/ ] || chmod uog-x $(CURDIR)/debian/psi-plus-skins/usr/share/psi-plus/skins/mac/native_mac/images/qcombobox.png
+ 
 
 override_dh_auto_clean:
 	dh_clean
