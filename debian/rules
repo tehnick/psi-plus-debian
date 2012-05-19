@@ -59,9 +59,6 @@ override_dh_install:
 	./debian/mergedups.sh
 	# Deleting extra copy of sound files
 	rm -rf $(CURDIR)/debian/psi-plus-common/usr/share/psi-plus/sound/
-	# Fixing permissions (temporary; it will be fixed in upstream)
-	[ ! -d $(CURDIR)/debian/psi-plus-skins/ ] || chmod uog-x $(CURDIR)/debian/psi-plus-skins/usr/share/psi-plus/skins/mac/native_mac/images/qcombobox.png
- 
 
 override_dh_auto_clean:
 	dh_clean
