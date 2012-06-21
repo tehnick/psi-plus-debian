@@ -1,3 +1,13 @@
+psi-plus (0.15.5338-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/copyright was updated: updated years.
+  * Used hardening flags in compiler options:
+    - added file debian/patches/add-hardening-flags-in-compiler-options
+    - updated debian/rules
+
+ -- Boris Pek <tehnick-8@mail.ru>  Fri, 22 Jun 2012 00:00:09 +0300
+
 psi-plus (0.15.5333-1) unstable; urgency=low
 
   * New upstream release.
