@@ -27,7 +27,7 @@ CUR_VER = $(shell uscan --dehs | sed -n 's/.*<upstream-version>\(.*\)<\/upstream
 
 QMAKE=qmake-qt4
 QCONF=qt-qconf
-CONF=--enable-plugins --enable-whiteboarding --disable-bundled-qca --debug --no-separate-debug-info
+CONF=--enable-plugins --enable-whiteboarding --debug --no-separate-debug-info
 
 # Selecting all plugins
 plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
