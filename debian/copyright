@@ -80,14 +80,10 @@ Files: src/psimedia/*
  src/tools/advwidget/*
  src/tools/iconset/*
  src/widgets/*
- third-party/*
 Copyright: 2008-2009 Barracuda Networks, Inc.
  2003-2007 Michail Pishchagin <mblsha@users.sourceforge.net>
  2003-2007 Justin Karneges <justin@affinix.com>
- 2004-2005 Brad Hards <bradh@frogmouth.net>
- 1999-2002 Aladdin Enterprises
  1999-2000 Tom Tromey
- 2003 Robert W. Brewer <rbrewer@op.net>
  2000 Red Hat, Inc.
  2007 Kevin Smith <kismith@psi-im.org>
  2009 Sergey Il'inykh
@@ -97,12 +93,9 @@ Copyright: 2008-2009 Barracuda Networks, Inc.
  2010 Vitaly Tonkacheyev
 License: LGPL-2.1+
 
-Files: third-party/qca/qca/src/botantools/botan/*
- third-party/qca/qca/src/botantools/wrapns.c
- src/tools/crash/crash_sigsegv.h
+Files: src/tools/crash/crash_sigsegv.h
  src/tools/crash/crash_sigsegv.cpp
 Copyright: 2003-2007 Justin Karneges <justin@affinix.com>
- 1999-2007 The Botan Project
  2003 Juan F. Codagnone <juam@users.sourceforge.net>
 License: BSD-2-clause
 
