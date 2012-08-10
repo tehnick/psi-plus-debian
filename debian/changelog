@@ -1,3 +1,14 @@
+psi-plus (0.15.5343-1) experimental; urgency=low
+
+  * New upstream release.
+  * Updated debian/rules:
+    deleted configuration option --disable-bundled-qca.
+  * Updated debian/copyright:
+    third-party/* subdirectories and files were removed from source tree in
+    upstream, so the list of copyright holders was reduced.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Sat, 11 Aug 2012 00:34:00 +0300
+
 psi-plus (0.15.5338-1) unstable; urgency=low
 
   * New upstream release.
