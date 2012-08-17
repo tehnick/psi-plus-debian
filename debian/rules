@@ -50,9 +50,11 @@ override_dh_auto_install:
 	rm -f $(CURDIR)/debian/psi-plus/usr/bin/psi-plus.debug # Removing static debug file
 	# Making the same, but using webkit
 	$(MAKE) clean
+	sed -i 's| (|-webkit (|' version
 	./configure --prefix=/usr $(CONF) --enable-webkit
 	$(MAKE) -j$(NUMJOBS)
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus-webkit install
+	sed -i 's|-webkit||' version
 	rm $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
 	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
 	cp $(CURDIR)/src/psi-plus $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus-webkit
@@ -88,6 +90,7 @@ override_dh_auto_clean:
 	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && [ ! -f Makefile ] || $(MAKE) distclean; )
 
 	rm -rf .pc_psi
+	sed -i 's|-webkit||' version
 
 override_dh_strip:
 	dh_strip -ppsi-plus --dbg-package=psi-plus-dbg
