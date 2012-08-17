@@ -1,3 +1,15 @@
+psi-plus (0.15.5347-1) experimental; urgency=low
+
+  * New upstream release.
+  * Updated debian/rules:
+    - added small hack for adding special mark into version string of
+      psi-plus-webkit program (needed after changes in upstream)
+    - fixed build of psi-plus-webkit package (needed after changes in upstream)
+  * Updated debian/patches/add-hardening-flags-in-compiler-options:
+    file was changed in upstream.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Fri, 17 Aug 2012 23:15:03 +0300
+
 psi-plus (0.15.5343-1) experimental; urgency=low
 
   * New upstream release.
