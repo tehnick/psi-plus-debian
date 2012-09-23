@@ -1,3 +1,12 @@
+psi-plus (0.15.5367-1) experimental; urgency=low
+
+  * New upstream release.
+  * Simplified debian/rules.
+  * Updated years in debian/copyright.
+  * Small fixes in debian/psi-plus-webkit.install and debian/psi-plus.install.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Mon, 24 Sep 2012 02:14:12 +0300
+
 psi-plus (0.15.5350-1) experimental; urgency=low
 
   * New upstream release.
