@@ -100,7 +100,7 @@ Copyright: 2003-2007 Justin Karneges <justin@affinix.com>
 License: BSD-2-clause
 
 Files: src/tools/tunecontroller/plugins/winamp/third-party/wa_ipc.h
-Copyright: 2003 Nullsoft, Inc.
+Copyright: 1997-2008 Nullsoft, Inc.
 License: zlib-License
 
 Files: src/plugins/generic/noughtsandcrosses/tictac.h
