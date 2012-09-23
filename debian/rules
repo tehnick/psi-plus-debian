@@ -1,13 +1,5 @@
 #!/usr/bin/make -f
 
-ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
-endif
-
-ifeq (,$(NUMJOBS))
-	NUMJOBS = 1
-endif
-
 Q_CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
 Q_CFLAGS:=$(shell dpkg-buildflags --get CFLAGS) $(Q_CPPFLAGS)
 Q_CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS) $(Q_CPPFLAGS)
@@ -41,37 +33,35 @@ override_dh_auto_configure:
 	./configure --prefix=/usr $(CONF)
 
 override_dh_auto_build:
-	$(MAKE) -j$(NUMJOBS)
-	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE) -j$(NUMJOBS); )
-	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE) -j$(NUMJOBS); )
+	dh_auto_build
+	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE); )
+	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE); )
 
 override_dh_auto_install:
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
-	rm -f $(CURDIR)/debian/psi-plus/usr/bin/psi-plus.debug # Removing static debug file
 	# Making the same, but using webkit
 	$(MAKE) clean
 	sed -i 's| (|-webkit (|' version
 	./configure --prefix=/usr $(CONF) --enable-webkit
-	$(MAKE) -j$(NUMJOBS)
+	dh_auto_build
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus-webkit install
 	sed -i 's|-webkit||' version
 	rm $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
 	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
 	cp $(CURDIR)/psi-plus $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus-webkit
 	cp $(CURDIR)/debian/psi-plus-webkit.desktop $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/
-	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus.debug # Removing static debug file
 	# Deleting temporary files
-	rm -f $(CURDIR)/debian/psi-plus/usr/share/psi-plus/COPYING
-	rm -f $(CURDIR)/debian/psi-plus-webkit/usr/share/psi-plus/COPYING
+	rm $(CURDIR)/debian/psi-plus/usr/share/psi-plus/COPYING
+	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/psi-plus/COPYING
 
 override_dh_install:
 	dh_install
 	# Deleting exported plugins
-	rm -f $(CURDIR)/debian/psi-plus-plugins/usr/lib/psi-plus/plugins/libcontentdownloaderplugin.so
+	rm $(CURDIR)/debian/psi-plus-plugins/usr/lib/psi-plus/plugins/libcontentdownloaderplugin.so
 	# Exporting all from psi-plus-common
 	./debian/mergedups.sh
 	# Deleting extra copy of sound files
-	rm -rf $(CURDIR)/debian/psi-plus-common/usr/share/psi-plus/sound/
+	rm -r $(CURDIR)/debian/psi-plus-common/usr/share/psi-plus/sound/
 
 override_dh_auto_clean:
 	dh_clean
