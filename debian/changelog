@@ -1,3 +1,17 @@
+psi-plus (0.16.19-1) experimental; urgency=low
+
+  * New upstream release.
+  * Recommend psi-plus-l10n instead of psi-plus-i18n.
+  * Move recommendations and suggestions from package psi-plus-common to
+    packages psi-plus and psi-plus-webkit.
+  * Packages psi-plus-plugins, psi-plus-content-downloader, psi-plus-skins,
+    psi-plus-sounds now depend from "psi-plus | psi-plus-webkit" instead of
+    psi-plus-common.
+  * Bumped debhelper version to 8 (was 7.0.50~); updated debian/compat.
+  * Remove obsolete DM-Upload-Allowed flag.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Mon, 22 Oct 2012 23:38:36 +0300
+
 psi-plus (0.15.5367-1) experimental; urgency=low
 
   * New upstream release.
