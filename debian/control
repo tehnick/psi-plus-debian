@@ -117,7 +117,7 @@ Description: common files for Psi+
 Package: psi-plus-plugins
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
- psi-plus-common (= ${source:Version})
+ psi-plus (=${binary:Version}) | psi-plus-webkit (=${binary:Version})
 Description: plugins for Psi+
  This package contains plugins for Psi+.
  .
@@ -153,10 +153,11 @@ Description: plugins for Psi+ [debug symbols]
 Package: psi-plus-content-downloader
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
- psi-plus-common
+ psi-plus (=${binary:Version}) | psi-plus-webkit (=${binary:Version})
 Replaces: psi-plus-plugins (<< 0.15~svn3047), psi-plus-content-download
 Breaks: psi-plus-plugins (<< 0.15~svn3047)
 Conflicts: psi-plus-content-download
+Provides: psi-plus-content-download
 Description: content downloader plugin for Psi+
  This package contains special plugin for Psi+ which allows you download
  some content (like non-free icons) from official Psi+ site. And you don't need
@@ -175,7 +176,7 @@ Description: content downloader plugin for Psi+
 Package: psi-plus-skins
 Architecture: all
 Depends: ${misc:Depends},
- psi-plus-common,
+ psi-plus | psi-plus-webkit,
  psi-plus-plugins
 Replaces: psi-plus-plugins (<< 0.15~svn3047)
 Breaks: psi-plus-plugins (<< 0.15~svn3047)
@@ -195,7 +196,7 @@ Description: skins for Psi+
 Package: psi-plus-sounds
 Architecture: all
 Depends: ${misc:Depends},
- psi-plus-common
+ psi-plus | psi-plus-webkit
 Breaks: psi-plus-common (<< 0.15~svn3910)
 Description: sound files for Psi+
  This package contains sound files for Psi+.
