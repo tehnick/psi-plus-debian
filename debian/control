@@ -91,7 +91,7 @@ Recommends: sox,
  psi-plus-plugins,
  psi-plus-sounds,
  psi-plus-skins,
- psi-plus-i18n
+ psi-plus-l10n
 Depends: ${misc:Depends}
 Suggests: libqca2-plugin-gnupg, xdg-utils
 Replaces: psi, psi-plus (<< 0.15~svn3057)
