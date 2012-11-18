@@ -34,8 +34,8 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	dh_auto_build
-	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE); )
-	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE); )
+	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE) || exit 1; )
+	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE) || exit 1; )
 
 override_dh_auto_install:
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
