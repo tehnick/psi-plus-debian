@@ -1,3 +1,13 @@
+psi-plus (0.16.37-1) experimental; urgency=low
+
+  * New upstream release.
+  * Update debian/watch: fix after recent changes in GitHub.
+  * Update debian/rules:
+    - fix get-orig-source section after recent changes in GitHub
+    - correctly process errors during build of Psi+ plugins (Closes: #692328)
+
+ -- Boris Pek <tehnick-8@mail.ru>  Sun, 18 Nov 2012 23:41:08 +0200
+
 psi-plus (0.16.19-1) experimental; urgency=low
 
   * New upstream release.
