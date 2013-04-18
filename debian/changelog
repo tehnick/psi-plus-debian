@@ -1,3 +1,9 @@
+psi-plus (0.16.111.1-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Boris Pek <tehnick-8@mail.ru>  Thu, 18 Apr 2013 22:12:52 +0300
+
 psi-plus (0.16.105-1) experimental; urgency=low
 
   * New upstream release. (Closes: #702975)
