@@ -1,3 +1,15 @@
+psi-plus (0.16.132-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fixed in upstream:
+    added support of libotr >= 4.0.0. (Closes: #702359)
+  * Change build dependency from libotr2-dev to libotr5-dev.
+  * Update get-orig-source section in debian/rules.
+  * Update debian/psi-plus-webkit.desktop.
+  * Update debian/copyright.
+
+ -- Boris Pek <tehnick@debian.org>  Thu, 18 Jul 2013 00:28:09 +0300
+
 psi-plus (0.16.117-1) unstable; urgency=low
 
   * New upstream release.
