@@ -99,8 +99,6 @@ Description: Qt-based XMPP/Jabber client (WebKit version) [debug symbols]
 Package: psi-plus-common
 Architecture: all
 Depends: ${misc:Depends}
-Replaces: psi, psi-plus (<< 0.15~svn3057)
-Breaks: psi-plus (<< 0.15~svn3057)
 Description: common files for Psi+
  This package contains common files for Psi+.
  .
@@ -157,8 +155,6 @@ Architecture: all
 Depends: ${misc:Depends},
  psi-plus | psi-plus-webkit,
  psi-plus-plugins
-Replaces: psi-plus-plugins (<< 0.15~svn3047)
-Breaks: psi-plus-plugins (<< 0.15~svn3047)
 Description: skins for Psi+
  This package contains skins for Psi+.
  .
@@ -176,7 +172,6 @@ Package: psi-plus-sounds
 Architecture: all
 Depends: ${misc:Depends},
  psi-plus | psi-plus-webkit
-Breaks: psi-plus-common (<< 0.15~svn3910)
 Description: sound files for Psi+
  This package contains sound files for Psi+.
  .
