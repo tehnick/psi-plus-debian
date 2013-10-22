@@ -118,6 +118,8 @@ Package: psi-plus-plugins
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
  psi-plus (=${binary:Version}) | psi-plus-webkit (=${binary:Version})
+Replaces: psi-plus-content-downloader
+Conflicts: psi-plus-content-downloader
 Description: plugins for Psi+
  This package contains plugins for Psi+.
  .
@@ -139,29 +141,6 @@ Depends: ${misc:Depends},
  psi-plus-plugins (=${binary:Version})
 Description: plugins for Psi+ [debug symbols]
  This package contains the debugging symbols for Psi+ plugins.
- .
- Psi is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for the
- Jabber power users. Psi+ is a development branch of Psi IM XMPP/Jabber client
- by <psi-dev@conference.jabber.ru> team.
- .
- Project Purpose: collection, refinement and writing new patches for transfer
- them to Psi upstream developers.
- .
- Full list of features you can found at:
- http://psi-plus.com/wiki/doku.php/en:features
-
-Package: psi-plus-content-downloader
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
- psi-plus (=${binary:Version}) | psi-plus-webkit (=${binary:Version})
-Replaces: psi-plus-plugins (<< 0.15~svn3047), psi-plus-content-download
-Breaks: psi-plus-plugins (<< 0.15~svn3047)
-Conflicts: psi-plus-content-download
-Provides: psi-plus-content-download
-Description: content downloader plugin for Psi+
- This package contains special plugin for Psi+ which allows you download
- some content (like non-free icons) from official Psi+ site. And you don't need
- this package if psi-plus-icons package is installed in your system.
  .
  Psi is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for the
  Jabber power users. Psi+ is a development branch of Psi IM XMPP/Jabber client
