@@ -1,3 +1,22 @@
+psi-plus (0.16.242-1) unstable; urgency=low
+
+  * New upstream release:
+    fixed the problem of initialization of private conversation when both
+    sides use libotr 4.0.x. (Closes: #724880)
+  * Update debian/watch: sources were moved.
+  * Delete psi-plus-content-downloader package and update all related files.
+    This plugin is in psi-plus-plugins package now.
+  * Update debian/control:
+    - remove all currently unneeded Replaces and Breaks fields
+    - add build dependency on libidn11-dev
+  * Update debian/rules: simplify get-orig-source section.
+  * Update debian/copyright:
+    - update Source field due to changes in sources location
+    - remove copyright holders whose code was deleted from source tree
+      (bundled libidn library was removed)
+
+ -- Boris Pek <tehnick@debian.org>  Wed, 23 Oct 2013 02:42:20 +0300
+
 psi-plus (0.16.132-1) unstable; urgency=low
 
   * New upstream release.
