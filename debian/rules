@@ -12,10 +12,11 @@ Q_OPTS = "QMAKE_CXXFLAGS += $(Q_CXXFLAGS)" \
          "QMAKE_LFLAGS += $(Q_LDFLAGS)"
 
 PACKAGE = psi-plus
-DEVELOPER = tehnick
-PROJECT = psi-plus
 
-CUR_VER = $(shell uscan --dehs | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
+DEBIAN_PATH := $(abspath $(dir $(MAKEFILE_LIST)))
+USCAN_REPORT = $(shell uscan --noconf --report --dehs $(DEBIAN_PATH))
+CUR_VER = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
+CUR_URL = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-url>\(.*\)<\/upstream-url>.*/\1/p')
 
 QMAKE=qmake-qt4
 QCONF=qt-qconf
@@ -56,8 +57,6 @@ override_dh_auto_install:
 
 override_dh_install:
 	dh_install
-	# Deleting exported plugins
-	rm $(CURDIR)/debian/psi-plus-plugins/usr/lib/psi-plus/plugins/libcontentdownloaderplugin.so
 	# Exporting all from psi-plus-common
 	./debian/mergedups.sh
 	# Deleting extra copy of sound files
@@ -89,13 +88,5 @@ override_dh_strip:
 	dh_strip --remaining-packages
 
 get-orig-source:
-	# preparation
-	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)"
-	# sources
-	wget -4 "https://codeload.github.com/$(DEVELOPER)/$(PROJECT)/tar.gz/$(CUR_VER)"
-	rm -rf $(PROJECT)-*
-	tar xzf "$(CUR_VER)"
-	# tarball
-	tar -cJf "$(PACKAGE)_$(CUR_VER).orig.tar.xz" "$(PACKAGE)-$(CUR_VER)"
-	# cleaning
-	rm -rf "$(PACKAGE)-$(CUR_VER)" "$(CUR_VER)"
+	wget -c4 "$(CUR_URL)"
+	mv "$(CUR_VER).tar.gz" "$(PACKAGE)_$(CUR_VER).orig.tar.gz"
