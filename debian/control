@@ -116,8 +116,8 @@ Package: psi-plus-plugins
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
  psi-plus (=${binary:Version}) | psi-plus-webkit (=${binary:Version})
-Replaces: psi-plus-content-downloader
-Conflicts: psi-plus-content-downloader
+Replaces: psi-plus-content-downloader, psi-plus-content-download
+Conflicts: psi-plus-content-downloader, psi-plus-content-download
 Description: plugins for Psi+
  This package contains plugins for Psi+.
  .
