@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 8),
 Homepage: http://psi-dev.googlecode.com/
 Vcs-Git: git://github.com/tehnick/psi-plus-debian.git
 Vcs-Browser: https://github.com/tehnick/psi-plus-debian
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 
 Package: psi-plus
 Architecture: any
