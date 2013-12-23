@@ -1,9 +1,16 @@
-psi-plus (0.16.242-1~bpo70+1) wheezy-backports; urgency=low
+psi-plus (0.16.262-1) unstable; urgency=medium
 
-  * Rebuild for wheezy-backports.
+  * New upstream release.
+  * Bump debhelper version to 9 (was 8); update debian/compat.
+  * Bump Standards-Version to 3.9.5 (was 3.9.4): no changes required.
   * Change build dependency from libotr5-dev to 'libotr5-dev | libotr2-dev'.
+    (For simplifying backports.)
+  * Simplify get-orig-source section in debian/rules.
+  * Package psi-plus-plugins now replaces psi-plus-content-download.
+    It does not affect users of Debian >= 7.0 (Wheezy), but it still may be
+    useful for some users (see #731106 for example).
 
- -- Boris Pek <tehnick@debian.org>  Sun, 03 Nov 2013 14:58:30 +0200
+ -- Boris Pek <tehnick@debian.org>  Sun, 15 Dec 2013 11:57:50 +0400
 
 psi-plus (0.16.242-1) unstable; urgency=low
 

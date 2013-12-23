@@ -2,14 +2,14 @@ Source: psi-plus
 Section: net
 Priority: optional
 Maintainer: Boris Pek <tehnick@debian.org>
-Build-Depends: debhelper (>= 8),
+Build-Depends: debhelper (>= 9),
  libqtwebkit-dev , qconf, libqca2-dev (>= 2.0.0),
  libxss-dev, libaspell-dev, zlib1g-dev, libsm-dev,
  libotr5-dev | libotr2-dev, libtidy-dev, libidn11-dev
 Homepage: http://psi-dev.googlecode.com/
 Vcs-Git: git://github.com/tehnick/psi-plus-debian.git
 Vcs-Browser: https://github.com/tehnick/psi-plus-debian
-Standards-Version: 3.9.4
+Standards-Version: 3.9.5
 
 Package: psi-plus
 Architecture: any
@@ -116,8 +116,8 @@ Package: psi-plus-plugins
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends},
  psi-plus (=${binary:Version}) | psi-plus-webkit (=${binary:Version})
-Replaces: psi-plus-content-downloader
-Conflicts: psi-plus-content-downloader
+Replaces: psi-plus-content-downloader, psi-plus-content-download
+Conflicts: psi-plus-content-downloader, psi-plus-content-download
 Description: plugins for Psi+
  This package contains plugins for Psi+.
  .
