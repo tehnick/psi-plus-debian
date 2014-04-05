@@ -1,3 +1,11 @@
+psi-plus (0.16.330-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update debian/control using wrap-and-sort tool.
+  * Update debian/copyright.
+
+ -- Boris Pek <tehnick@debian.org>  Sat, 05 Apr 2014 21:35:45 +0400
+
 psi-plus (0.16.285-1) unstable; urgency=medium
 
   * New upstream release.
