@@ -1,3 +1,10 @@
+psi-plus (0.16.475-0ppa2~wily1) wily; urgency=medium
+
+  * Do not use qconf for updating configure script until new version of qconf
+    is released and packaged.
+
+ -- Boris Pek <tehnick@debian.org>  Fri, 16 Oct 2015 12:25:25 +0300
+
 psi-plus (0.16.475-0ppa1~wily1) wily; urgency=medium
 
   * New upstream release.
