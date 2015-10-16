@@ -1,3 +1,9 @@
+psi-plus (0.16.475-0ppa1~wily1) wily; urgency=medium
+
+  * New upstream release.
+
+ -- Boris Pek <tehnick@debian.org>  Fri, 16 Oct 2015 09:23:32 +0300
+
 psi-plus (0.16.330-1) unstable; urgency=medium
 
   * New upstream release.
