@@ -1,6 +1,6 @@
-Description: Add hardening flags in compiler options
+Description: Add hardening flags into compiler options
 Author: Boris Pek <tehnick-8@mail.ru>
-Last-Update: 2012-08-17
+Last-Update: 2014-05-03
 
 --- a/src/src.pro
 +++ b/src/src.pro
