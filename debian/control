@@ -5,6 +5,7 @@ Maintainer: Boris Pek <tehnick@debian.org>
 Build-Depends: debhelper (>= 9),
                libaspell-dev,
                libidn11-dev,
+               libminizip-dev,
                libotr5-dev | libotr2-dev,
                libqca2-dev,
                libqtwebkit-dev,
