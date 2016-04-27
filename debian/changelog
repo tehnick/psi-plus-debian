@@ -1,3 +1,9 @@
+psi-plus (0.16.546.539-0ppa1~xenial1) xenial; urgency=medium
+
+  * New release.
+
+ -- Boris Pek <tehnick@debian.org>  Wed, 27 Apr 2016 22:45:16 +0300
+
 psi-plus (0.16.545.538-0ppa1~xenial1) xenial; urgency=medium
 
   * New release.
