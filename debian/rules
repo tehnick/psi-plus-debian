@@ -20,7 +20,7 @@ CUR_URL = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-url>\(.*\)<\/up
 
 QMAKE=qmake-qt4
 QCONF=qt-qconf
-CONF=--enable-plugins --enable-whiteboarding --debug --no-separate-debug-info
+CONF=--debug --no-separate-debug-info
 
 # Selecting all plugins
 plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
