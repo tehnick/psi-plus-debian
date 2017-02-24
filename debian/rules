@@ -18,9 +18,11 @@ USCAN_REPORT = $(shell uscan --noconf --report --dehs $(DEBIAN_PATH))
 CUR_VER = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
 CUR_URL = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-url>\(.*\)<\/upstream-url>.*/\1/p')
 
-QMAKE=qmake-qt4
+QMAKE=qmake
 QCONF=qt-qconf
 CONF=--debug --no-separate-debug-info
+
+export QT_SELECT=qt5
 
 # Selecting all plugins
 plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
