@@ -1,3 +1,9 @@
+psi-plus-qt4 (0.16.575.639-0ppa2~trusty1) trusty; urgency=medium
+
+  * Update debian/rules: add -std=c++11 to CXXFLAGS.
+
+ -- Boris Pek <tehnick@debian.org>  Thu, 16 Mar 2017 00:13:35 +0300
+
 psi-plus-qt4 (0.16.575.639-0ppa1~trusty1) trusty; urgency=medium
 
   * Backport to Ubuntu Trusty.
