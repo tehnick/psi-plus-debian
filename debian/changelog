@@ -1,3 +1,9 @@
+psi-plus (0.16.584.737-0ppa1~zesty1) zesty; urgency=medium
+
+  * New release.
+
+ -- Boris Pek <tehnick@debian.org>  Wed, 17 May 2017 22:37:57 +0300
+
 psi-plus (0.16.584.735-0ppa1~zesty1) zesty; urgency=medium
 
   * New release.
