@@ -13,26 +13,9 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 BUILDDIR1 = $(CURDIR)/debian/builddir1
 BUILDDIR2 = $(CURDIR)/debian/builddir2
+DESTDIR   = $(CURDIR)/debian/tmp
 
-DEB_DH_INSTALL_SOURCEDIR = $(CURDIR)/debian/tmp
-
-# CMAKEOPTS = -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-#             -DCMAKE_CXX_FLAGS="$(CXXFLAGS)" \
-#             -DCMAKE_SHARED_LINKER_FLAGS="$(LDFLAGS)" \
-#             -DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
-#             -DCMAKE_INSTALL_PREFIX=/usr \
-#             -DBUNDLED_IRIS=ON \
-#             -DONLY_PLUGINS=OFF \
-#             -DUSE_HUNSPELL=ON \
-#             -DUSE_ENCHANT=OFF \
-#             -DSEPARATE_QJDNS=OFF \
-#             -DUSE_QT5=ON \
-#             -DUSE_WEBENGINE=OFF \
-#             -DUSE_CCACHE=OFF \
-#             ..
-
-CMAKEOPTS = -DCMAKE_INSTALL_PREFIX=/usr \
-            -DBUNDLED_IRIS=ON \
+CMAKEOPTS = -DBUNDLED_IRIS=ON \
             -DONLY_PLUGINS=OFF \
             -DUSE_HUNSPELL=ON \
             -DUSE_ENCHANT=OFF \
@@ -42,10 +25,10 @@ CMAKEOPTS = -DCMAKE_INSTALL_PREFIX=/usr \
             -DUSE_CCACHE=OFF
 
 OPTSSTEP1 = -DENABLE_PLUGINS=ON \
-            -DENABLE_WEBKIT=ON
+            -DENABLE_WEBKIT=OFF
 
 OPTSSTEP2 = -DENABLE_PLUGINS=OFF \
-            -DENABLE_WEBKIT=OFF
+            -DENABLE_WEBKIT=ON
 
 %:
 	dh $@ --buildsystem=cmake --parallel --list-missing
@@ -63,11 +46,11 @@ override_dh_auto_test:
 	dh_auto_test -B$(BUILDDIR2)
 
 override_dh_auto_install:
-	dh_auto_install -B$(BUILDDIR1) --destdir=$(DEB_DH_INSTALL_SOURCEDIR)
-	cp -a $(BUILDDIR2)/psi/psi-plus $(DEB_DH_INSTALL_SOURCEDIR)/usr/bin/psi-plus-webkit
-	cp -a $(CURDIR)/debian/psi-plus*.desktop $(DEB_DH_INSTALL_SOURCEDIR)/usr/share/applications/
-	cp -a $(CURDIR)/debian/psi-plus*.xpm $(DEB_DH_INSTALL_SOURCEDIR)/usr/share/psi-plus
-	cp -a $(CURDIR)/skins $(DEB_DH_INSTALL_SOURCEDIR)/usr/share/psi-plus/
+	dh_auto_install -B$(BUILDDIR1) --destdir=$(DESTDIR)
+	cp -a $(BUILDDIR2)/psi/psi-plus $(DESTDIR)/usr/bin/psi-plus-webkit
+	cp -a $(CURDIR)/debian/psi-plus*.desktop $(DESTDIR)/usr/share/applications/
+	cp -a $(CURDIR)/skins $(DESTDIR)/usr/share/psi-plus/
+	cp -a $(CURDIR)/themes $(DESTDIR)/usr/share/psi-plus/
 
 get-orig-source:
 	wget -c4 "$(CUR_URL)" -O "$(PACKAGE)_$(CUR_VER).orig.tar.gz"
