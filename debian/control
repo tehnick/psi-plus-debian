@@ -27,9 +27,9 @@ Package: psi-plus
 Architecture: any
 Depends: psi-plus-common (= ${source:Version}),
          ${misc:Depends},
-         ${shlibs:Depends}
-Recommends: libqca-qt5-2-plugins,
-            psi-plus-l10n,
+         ${shlibs:Depends},
+         libqca-qt5-2-plugins
+Recommends: psi-plus-l10n,
             psi-plus-plugins,
             psi-plus-sounds,
             sox
@@ -51,9 +51,9 @@ Package: psi-plus-webkit
 Architecture: any
 Depends: psi-plus-common (= ${source:Version}),
          ${misc:Depends},
-         ${shlibs:Depends}
-Recommends: libqca-qt5-2-plugins,
-            psi-plus-l10n,
+         ${shlibs:Depends},
+         libqca-qt5-2-plugins
+Recommends: psi-plus-l10n,
             psi-plus-plugins,
             psi-plus-skins,
             psi-plus-sounds,
