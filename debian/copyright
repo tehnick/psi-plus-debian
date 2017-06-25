@@ -167,6 +167,7 @@ Files: themes/*
        sound/reminder.wav
        iconsets/system/default/psiplus/*
        iconsets/roster/default/typing.png
+       src/plugins/dev/pstoplugin/*
        src/plugins/generic/attentionplugin/*
        src/plugins/generic/extendedoptionsplugin/*
        src/plugins/generic/qipxstatusesplugin/*
@@ -192,7 +193,6 @@ Files: themes/*
        src/plugins/generic/contentdownloaderplugin/*
        src/plugins/generic/pepchangenotifyplugin/*
        src/plugins/generic/extendedmenuplugin/*
-       src/plugins/generic/pstoplugin/*
        src/plugins/generic/otrplugin/*
        src/plugins/deprecated/captchaformsplugin/*
        src/plugins/deprecated/gmailserviceplugin/*
