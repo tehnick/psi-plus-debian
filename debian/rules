@@ -22,7 +22,8 @@ CMAKEOPTS = -DBUNDLED_IRIS=ON \
             -DSEPARATE_QJDNS=OFF \
             -DUSE_QT5=ON \
             -DUSE_WEBENGINE=OFF \
-            -DUSE_CCACHE=OFF
+            -DUSE_CCACHE=ON \
+            -DVERBOSE_PROGRAM_NAME=ON
 
 OPTSSTEP1 = -DENABLE_PLUGINS=ON \
             -DENABLE_WEBKIT=OFF
@@ -47,11 +48,11 @@ override_dh_auto_test:
 
 override_dh_auto_install:
 	dh_auto_install -B$(BUILDDIR1) --destdir=$(DESTDIR)
-	cp -a $(BUILDDIR2)/psi/psi-plus $(DESTDIR)/usr/bin/psi-plus-webkit
+	cp -a $(BUILDDIR2)/psi/psi-plus-webkit $(DESTDIR)/usr/bin/
 	cp -a $(CURDIR)/debian/psi-plus*.desktop $(DESTDIR)/usr/share/applications/
 	cp -a $(CURDIR)/skins $(DESTDIR)/usr/share/psi-plus/
 	cp -a $(CURDIR)/themes $(DESTDIR)/usr/share/psi-plus/
 
 get-orig-source:
-	wget -c4 "$(CUR_URL)" -O "$(PACKAGE)_$(CUR_VER).orig.tar.gz"
+	wget -c "$(CUR_URL)" -O "$(PACKAGE)_$(CUR_VER).orig.tar.gz"
 
