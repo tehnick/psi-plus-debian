@@ -37,12 +37,12 @@ Suggests: xdg-utils
 Description: Qt-based XMPP/Jabber client (basic version)
  This package contains basic version of Psi+.
  .
- Psi is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for the
- Jabber power users. Psi+ is a development branch of Psi IM XMPP/Jabber client
- by <psi-dev@conference.jabber.ru> team.
+ Psi IM is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for
+ the Jabber power users. Psi+ is a development branch of Psi client by
+ <psi-dev@conference.jabber.ru> team.
  .
- Project Purpose: collection, refinement and writing new patches for transfer
- them to Psi upstream developers.
+ Project Purpose: collection, refinement and writing new patches for
+ transferring them to Psi IM upstream.
  .
  Full list of features you can found at:
  http://psi-plus.com/wiki/doku.php/en:features
@@ -62,12 +62,12 @@ Suggests: xdg-utils
 Description: Qt-based XMPP/Jabber client (WebKit version)
  This package contains WebKit version of Psi+.
  .
- Psi is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for the
- Jabber power users. Psi+ is a development branch of Psi IM XMPP/Jabber client
- by <psi-dev@conference.jabber.ru> team.
+ Psi IM is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for
+ the Jabber power users. Psi+ is a development branch of Psi client by
+ <psi-dev@conference.jabber.ru> team.
  .
- Project Purpose: collection, refinement and writing new patches for transfer
- them to Psi upstream developers.
+ Project Purpose: collection, refinement and writing new patches for
+ transferring them to Psi IM upstream.
  .
  Full list of features you can found at:
  http://psi-plus.com/wiki/doku.php/en:features
@@ -78,12 +78,12 @@ Depends: ${misc:Depends}
 Description: common files for Psi+
  This package contains common files for Psi+.
  .
- Psi is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for the
- Jabber power users. Psi+ is a development branch of Psi IM XMPP/Jabber client
- by <psi-dev@conference.jabber.ru> team.
+ Psi IM is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for
+ the Jabber power users. Psi+ is a development branch of Psi client by
+ <psi-dev@conference.jabber.ru> team.
  .
- Project Purpose: collection, refinement and writing new patches for transfer
- them to Psi upstream developers.
+ Project Purpose: collection, refinement and writing new patches for
+ transferring them to Psi IM upstream.
  .
  Full list of features you can found at:
  http://psi-plus.com/wiki/doku.php/en:features
@@ -93,17 +93,15 @@ Architecture: any
 Depends: psi-plus (=${binary:Version}) | psi-plus-webkit (=${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
-Replaces: psi-plus-content-download, psi-plus-content-downloader
-Conflicts: psi-plus-content-download, psi-plus-content-downloader
 Description: plugins for Psi+
  This package contains plugins for Psi+.
  .
- Psi is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for the
- Jabber power users. Psi+ is a development branch of Psi IM XMPP/Jabber client
- by <psi-dev@conference.jabber.ru> team.
+ Psi IM is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for
+ the Jabber power users. Psi+ is a development branch of Psi client by
+ <psi-dev@conference.jabber.ru> team.
  .
- Project Purpose: collection, refinement and writing new patches for transfer
- them to Psi upstream developers.
+ Project Purpose: collection, refinement and writing new patches for
+ transferring them to Psi IM upstream.
  .
  Full list of features you can found at:
  http://psi-plus.com/wiki/doku.php/en:features
@@ -114,12 +112,12 @@ Depends: psi-plus | psi-plus-webkit, psi-plus-plugins, ${misc:Depends}
 Description: skins for Psi+
  This package contains skins for Psi+.
  .
- Psi is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for the
- Jabber power users. Psi+ is a development branch of Psi IM XMPP/Jabber client
- by <psi-dev@conference.jabber.ru> team.
+ Psi IM is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for
+ the Jabber power users. Psi+ is a development branch of Psi client by
+ <psi-dev@conference.jabber.ru> team.
  .
- Project Purpose: collection, refinement and writing new patches for transfer
- them to Psi upstream developers.
+ Project Purpose: collection, refinement and writing new patches for
+ transferring them to Psi IM upstream.
  .
  Full list of features you can found at:
  http://psi-plus.com/wiki/doku.php/en:features
@@ -130,12 +128,12 @@ Depends: psi-plus | psi-plus-webkit, ${misc:Depends}
 Description: sound files for Psi+
  This package contains sound files for Psi+.
  .
- Psi is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for the
- Jabber power users. Psi+ is a development branch of Psi IM XMPP/Jabber client
- by <psi-dev@conference.jabber.ru> team.
+ Psi IM is a cross-platform powerful XMPP/Jabber client (Qt, C++) designed for
+ the Jabber power users. Psi+ is a development branch of Psi client by
+ <psi-dev@conference.jabber.ru> team.
  .
- Project Purpose: collection, refinement and writing new patches for transfer
- them to Psi upstream developers.
+ Project Purpose: collection, refinement and writing new patches for
+ transferring them to Psi IM upstream.
  .
  Full list of features you can found at:
  http://psi-plus.com/wiki/doku.php/en:features
