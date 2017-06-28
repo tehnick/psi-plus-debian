@@ -2,7 +2,8 @@ Source: psi-plus
 Section: net
 Priority: optional
 Maintainer: Boris Pek <tehnick@debian.org>
-Build-Depends: cmake,
+Build-Depends: ccache,
+               cmake,
                debhelper (>= 9),
                libhunspell-dev,
                libidn11-dev,
@@ -15,13 +16,12 @@ Build-Depends: cmake,
                libsm-dev,
                libtidy-dev,
                libxss-dev,
-               qconf,
                qtmultimedia5-dev,
                zlib1g-dev
 Homepage: http://psi-plus.com/
 Vcs-Git: https://github.com/tehnick/psi-plus-debian.git
 Vcs-Browser: https://github.com/tehnick/psi-plus-debian
-Standards-Version: 3.9.5
+Standards-Version: 4.0.0
 
 Package: psi-plus
 Architecture: any
