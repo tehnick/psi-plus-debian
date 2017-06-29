@@ -22,7 +22,7 @@ CMAKEOPTS = -DBUNDLED_IRIS=ON \
             -DSEPARATE_QJDNS=OFF \
             -DUSE_QT5=ON \
             -DUSE_WEBENGINE=OFF \
-            -DUSE_CCACHE=ON \
+            -DUSE_CCACHE=OFF \
             -DVERBOSE_PROGRAM_NAME=ON
 
 OPTSSTEP1 = -DENABLE_PLUGINS=ON \

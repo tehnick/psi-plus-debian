@@ -2,8 +2,7 @@ Source: psi-plus
 Section: net
 Priority: optional
 Maintainer: Boris Pek <tehnick@debian.org>
-Build-Depends: ccache,
-               cmake,
+Build-Depends: cmake,
                debhelper (>= 9),
                libhunspell-dev,
                libidn11-dev,
