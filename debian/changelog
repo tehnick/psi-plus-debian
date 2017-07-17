@@ -1,3 +1,9 @@
+psi-plus-qt4 (1.0.136-0ppa1~trusty1) trusty; urgency=medium
+
+  * Backport to Ubuntu Trusty.
+
+ -- Boris Pek <tehnick@debian.org>  Mon, 17 Jul 2017 12:27:17 +0300
+
 psi-plus-qt4 (1.0.134-0ppa1~trusty1) trusty; urgency=medium
 
   * Backport to Ubuntu Trusty.
