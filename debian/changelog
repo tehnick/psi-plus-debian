@@ -1,3 +1,9 @@
+psi-plus (1.1.21-0ppa1~artful1) artful; urgency=medium
+
+  * New release.
+
+ -- Boris Pek <tehnick@debian.org>  Sun, 23 Jul 2017 16:29:03 +0300
+
 psi-plus (1.1.9-0ppa1~artful1) artful; urgency=medium
 
   * New release.
