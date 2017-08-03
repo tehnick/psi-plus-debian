@@ -1,0 +1,30 @@
+Description: Fix -Wnarrowing on unsighed char architectures
+Author: Andrey Rahmatullin <wrar@debian.org>
+Last-Update: 2016-11-19
+
+Index: psi-plus-0.16.330/iris/src/xmpp/base64/base64.cpp
+===================================================================
+--- psi-plus-0.16.330.orig/iris/src/xmpp/base64/base64.cpp
++++ psi-plus-0.16.330/iris/src/xmpp/base64/base64.cpp
+@@ -45,7 +45,7 @@ QByteArray Base64::decode(const QString&
+ 	// 64 specifies eof
+ 	// everything else specifies data
+ 
+-	char tbl[] = {
++	signed char tbl[] = {
+ 		-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+ 		-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+ 		-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,62,-1,-1,-1,63,
+Index: psi-plus-0.16.330/src/plugins/generic/skinsplugin/optionsparser.cpp
+===================================================================
+--- psi-plus-0.16.330.orig/src/plugins/generic/skinsplugin/optionsparser.cpp
++++ psi-plus-0.16.330/src/plugins/generic/skinsplugin/optionsparser.cpp
+@@ -253,7 +253,7 @@ QByteArray Base64::decode(const QString&
+         // 64 specifies eof
+         // everything else specifies data
+ 
+-        char tbl[] = {
++        signed char tbl[] = {
+                 -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+                 -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+                 -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,62,-1,-1,-1,63,
