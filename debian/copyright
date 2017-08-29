@@ -248,6 +248,12 @@ Files: 3rdparty/qhttp/*
 Copyright: 2014-2016 Amir Zamani <azadkuh@live.com>
 License: Expat
 
+Files: 3rdparty/http-parser/*
+Copyright: Igor Sysoev
+           Joyent, Inc.
+           Fedor Indutny
+License: Expat
+
 Files: themes/chatview/moment-with-locales.js
 Copyright: 2011-2015 Tim Wood, Iskren Chernev and Moment.js contributors
            2016 JS Foundation and other contributors
