@@ -1,16 +1,5 @@
 #!/usr/bin/make -f
 
-Q_CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
-Q_CFLAGS:=$(shell dpkg-buildflags --get CFLAGS) $(Q_CPPFLAGS)
-Q_CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS) $(Q_CPPFLAGS)
-Q_LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
-export Q_CPPFLAGS Q_CFLAGS Q_CXXFLAGS Q_LDFLAGS
-
-Q_OPTS = "QMAKE_CXXFLAGS += $(Q_CXXFLAGS)" \
-         "QMAKE_CFLAGS_DEBUG += $(Q_CFLAGS)" \
-         "QMAKE_CFLAGS_RELEASE += $(Q_CFLAGS)" \
-         "QMAKE_LFLAGS += $(Q_LDFLAGS)"
-
 PACKAGE = psi-plus
 
 DEBIAN_PATH := $(abspath $(dir $(MAKEFILE_LIST)))
@@ -18,74 +7,52 @@ USCAN_REPORT = $(shell uscan --noconf --report --dehs $(DEBIAN_PATH))
 CUR_VER = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-version>\(.*\)<\/upstream-version>.*/\1/p')
 CUR_URL = $(shell echo "$(USCAN_REPORT)" | sed -n 's/.*<upstream-url>\(.*\)<\/upstream-url>.*/\1/p')
 
-QMAKE=qmake-qt4
-QCONF=qt-qconf
-CONF=--enable-plugins --enable-whiteboarding --debug --no-separate-debug-info
+export DEB_CXXFLAGS_MAINT_APPEND = $(shell dpkg-buildflags --get CPPFLAGS)
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
-# Selecting all plugins
-plugins_generic = $(notdir $(wildcard $(CURDIR)/src/plugins/generic/*plugin ) )
-plugins_unix = $(notdir $(wildcard $(CURDIR)/src/plugins/unix/*plugin ) )
+BUILDDIR1 = $(CURDIR)/debian/builddir1
+BUILDDIR2 = $(CURDIR)/debian/builddir2
+DESTDIR   = $(CURDIR)/debian/tmp
+
+CMAKEOPTS = -DBUNDLED_IRIS=ON \
+            -DONLY_PLUGINS=OFF \
+            -DUSE_HUNSPELL=ON \
+            -DUSE_ENCHANT=OFF \
+            -DSEPARATE_QJDNS=OFF \
+            -DUSE_QT5=ON \
+            -DUSE_WEBENGINE=OFF \
+            -DUSE_CCACHE=OFF \
+            -DVERBOSE_PROGRAM_NAME=ON
+
+OPTSSTEP1 = -DENABLE_PLUGINS=ON \
+            -DENABLE_WEBKIT=OFF
+
+OPTSSTEP2 = -DENABLE_PLUGINS=OFF \
+            -DENABLE_WEBKIT=ON
 
 %:
-	dh $@ --parallel
+	dh $@ --buildsystem=cmake --parallel --list-missing
 
 override_dh_auto_configure:
-	#$(QCONF)
-	./configure --prefix=/usr $(CONF)
+	dh_auto_configure -B$(BUILDDIR1) -- $(CMAKEOPTS) $(OPTSSTEP1)
+	dh_auto_configure -B$(BUILDDIR2) -- $(CMAKEOPTS) $(OPTSSTEP2)
 
 override_dh_auto_build:
-	dh_auto_build
-	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE) || exit 1; )
-	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && $(QMAKE) $(Q_OPTS) && $(MAKE) || exit 1; )
+	dh_auto_build -B$(BUILDDIR1)
+	dh_auto_build -B$(BUILDDIR2)
+
+override_dh_auto_test:
+	dh_auto_test -B$(BUILDDIR1)
+	dh_auto_test -B$(BUILDDIR2)
 
 override_dh_auto_install:
-	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus install
-	# Making the same, but using webkit
-	$(MAKE) clean
-	sed -i 's| (|-webkit (|' version
-	./configure --prefix=/usr $(CONF) --enable-webkit
-	dh_auto_build
-	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/psi-plus-webkit install
-	sed -i 's|-webkit||' version
-	rm $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus
-	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/psi-plus.desktop
-	cp $(CURDIR)/psi-plus $(CURDIR)/debian/psi-plus-webkit/usr/bin/psi-plus-webkit
-	cp $(CURDIR)/debian/psi-plus-webkit.desktop $(CURDIR)/debian/psi-plus-webkit/usr/share/applications/
-	# Deleting temporary files
-	rm $(CURDIR)/debian/psi-plus/usr/share/psi-plus/COPYING
-	rm $(CURDIR)/debian/psi-plus-webkit/usr/share/psi-plus/COPYING
-
-override_dh_install:
-	dh_install
-	# Exporting all from psi-plus-common
-	./debian/mergedups.sh
-	# Deleting extra copy of sound files
-	rm -r $(CURDIR)/debian/psi-plus-common/usr/share/psi-plus/sound/
-
-override_dh_auto_clean:
-	dh_clean
-	[ ! -f Makefile ] || $(MAKE) distclean
-	rm -f config.sub config.guess #configure
-
-	rm -f psi-plus src/psi-plus src/config.h
-	rm -f Makefile src/Makefile libpsi/psiwidgets/Makefile
-	rm -f conf.pri extra.pri conf.log
-	rm -f src/.qmake.internal.cache
-
-	rm -rf iris/lib iris/conf.pri
-	rm -rf .qconftemp
-
-	$(foreach plug,$(plugins_generic), cd $(CURDIR)/src/plugins/generic/$(plug) && [ ! -f Makefile ] || $(MAKE) distclean; )
-	$(foreach plug,$(plugins_unix), cd $(CURDIR)/src/plugins/unix/$(plug) && [ ! -f Makefile ] || $(MAKE) distclean; )
-
-	rm -rf .pc_psi
-	sed -i 's|-webkit||' version
-
-override_dh_strip:
-	dh_strip -ppsi-plus --dbg-package=psi-plus-dbg
-	dh_strip -ppsi-plus-webkit --dbg-package=psi-plus-webkit-dbg
-	dh_strip -ppsi-plus-plugins --dbg-package=psi-plus-plugins-dbg
-	dh_strip --remaining-packages
+	dh_auto_install -B$(BUILDDIR1) --destdir=$(DESTDIR)
+	cp -a $(BUILDDIR2)/psi/psi-plus-webkit $(DESTDIR)/usr/bin/
+	cp -a $(CURDIR)/debian/psi-plus*.desktop $(DESTDIR)/usr/share/applications/
+	cp -a $(CURDIR)/skins $(DESTDIR)/usr/share/psi-plus/
+	cp -a $(CURDIR)/themes $(DESTDIR)/usr/share/psi-plus/
 
 get-orig-source:
-	wget -c4 "$(CUR_URL)" -O "$(PACKAGE)_$(CUR_VER).orig.tar.gz"
+	wget -c "$(CUR_URL)" -O "$(PACKAGE)_$(CUR_VER).orig.tar.gz"
+
