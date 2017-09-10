@@ -1,3 +1,11 @@
+psi-plus (1.2.71-1) unstable; urgency=medium
+
+  * New upstream release:
+    added workaround which fixes connection to XMPP server using manually set
+    IP address. (Closes: #874481)
+
+ -- Boris Pek <tehnick@debian.org>  Sun, 10 Sep 2017 22:54:58 +0300
+
 psi-plus (1.2.40-1) unstable; urgency=medium
 
   * New upstream release:
