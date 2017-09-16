@@ -1,3 +1,9 @@
+psi-plus (1.2.71-1~bpo9+1) stretch-backports; urgency=medium
+
+  * Rebuild for stretch-backports.
+
+ -- Boris Pek <tehnick@debian.org>  Sun, 17 Sep 2017 00:03:28 +0300
+
 psi-plus (1.2.71-1) unstable; urgency=medium
 
   * New upstream release:
