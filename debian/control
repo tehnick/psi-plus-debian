@@ -20,7 +20,7 @@ Build-Depends: cmake,
 Homepage: http://psi-plus.com/
 Vcs-Git: https://github.com/tehnick/psi-plus-debian.git
 Vcs-Browser: https://github.com/tehnick/psi-plus-debian
-Standards-Version: 4.1.0
+Standards-Version: 4.1.1
 
 Package: psi-plus
 Architecture: any
