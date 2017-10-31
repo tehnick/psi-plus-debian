@@ -1,8 +1,9 @@
-psi-plus (1.2.71-1~bpo9+1) stretch-backports; urgency=medium
+psi-plus (1.2.105-1) unstable; urgency=medium
 
-  * Rebuild for stretch-backports.
+  * New upstream release.
+  * Bump Standards-Version to 4.1.1 (was 4.1.0): no changes required.
 
- -- Boris Pek <tehnick@debian.org>  Sun, 17 Sep 2017 00:03:28 +0300
+ -- Boris Pek <tehnick@debian.org>  Thu, 26 Oct 2017 00:41:55 +0300
 
 psi-plus (1.2.71-1) unstable; urgency=medium
 
