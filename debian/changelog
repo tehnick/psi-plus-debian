@@ -1,3 +1,9 @@
+psi-plus (1.2.126-0ppa1~bionic1) bionic; urgency=medium
+
+  * New release.
+
+ -- Boris Pek <tehnick@debian.org>  Sat, 30 Dec 2017 00:57:31 +0300
+
 psi-plus (1.2.125-0ppa1~bionic1) bionic; urgency=medium
 
   * New release.
