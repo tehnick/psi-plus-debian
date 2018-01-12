@@ -3,7 +3,7 @@ Section: net
 Priority: optional
 Maintainer: Boris Pek <tehnick@debian.org>
 Build-Depends: cmake,
-               debhelper (>= 10),
+               debhelper (>= 9),
                libhunspell-dev,
                libidn11-dev,
                libminizip-dev,
