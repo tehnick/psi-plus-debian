@@ -1,4 +1,4 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Psi+
 Upstream-Contact: Sergey Ilinykh <rion4ik@gmail.com>
                   Boris Pek <tehnick-8@yandex.ru>
@@ -265,7 +265,7 @@ License: GPL-2+
 
 Files: debian/*
 Copyright: 2009-2011 Ivan Borzenkov <ivan1986@list.ru>
-           2011-2017 Boris Pek <tehnick-8@yandex.ru>
+           2011-2018 Boris Pek <tehnick-8@yandex.ru>
 License: GPL-2+
 
 License: GPL-2+
