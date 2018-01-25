@@ -15,6 +15,7 @@ Build-Depends: cmake,
                libsm-dev,
                libtidy-dev,
                libxss-dev,
+               qt5keychain-dev,
                qtmultimedia5-dev,
                zlib1g-dev
 Homepage: http://psi-plus.com/
